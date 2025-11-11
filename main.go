@@ -19,6 +19,7 @@ func main() {
 		fmt.Println("1 - добавить задачу")
 		fmt.Println("2 - удалить задачу")
 		fmt.Println("3 - просмотреть задачи")
+		fmt.Println("4 - обновить статус задачи задачи")
 		fmt.Println("0 - EXIT")
 
 		fmt.Print("Ваш выбор: ")
@@ -27,21 +28,27 @@ func main() {
 
 		switch input {
 		case "1":
-			add := ""
 			fmt.Println("")
 			fmt.Print("Введите название задачи: ")
-			fmt.Scanln(&add)
+			add, _ := reader.ReadString('\n')
+			add = strings.TrimSpace(add)
 			methodwithjson.Add(add)
 		case "2":
-			del := ""
 			fmt.Println("")
 			fmt.Print("Введите название задачи которую хотите удалить: ")
-			fmt.Scanln(&del)
+			del, _ := reader.ReadString('\n')
+			del = strings.TrimSpace(del)
 			methodwithjson.Delete(del)
 		case "3":
 			fmt.Println("")
 			fmt.Println("Задачи в списке: ")
 			methodwithjson.Out()
+		case "4":
+			fmt.Println("")
+			fmt.Print("Введите название задачи: ")
+			updnametask, _ := reader.ReadString('\n')
+			updnametask = strings.TrimSpace(updnametask)
+			methodwithjson.Update(updnametask)
 		case "0":
 			fmt.Println("")
 			fmt.Println("Exit")

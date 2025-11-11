@@ -3,6 +3,7 @@ package methodwithjson
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"math/rand"
 	"os"
 	"project/workjson"
@@ -21,13 +22,20 @@ func Add(name string) {
 
 	data, err := os.ReadFile(file)
 	if err != nil && !os.IsNotExist(err) {
-		panic(err)
+		log.Fatalf("ошибка чтения файла: %v", err)
 	}
 
 	var taskes []workjson.Task
 	if len(data) > 0 {
 		if err := json.Unmarshal(data, &taskes); err != nil {
-			panic(fmt.Errorf("ошибка чтения JSON: %v", err))
+			log.Fatalf("ошибка чтения JSON: %v", err)
+		}
+	}
+
+	for i := range taskes {
+		if taskes[i].Name == name {
+			fmt.Println("Такая задача уже существует")
+			return
 		}
 	}
 
@@ -35,10 +43,10 @@ func Add(name string) {
 
 	updated, err := json.MarshalIndent(taskes, "", "  ")
 	if err != nil {
-		panic(err)
+		log.Fatalf("ошибка конвертации в JSON: %v", err)
 	}
 	if err := os.WriteFile(file, updated, 0644); err != nil {
-		panic(err)
+		log.Fatalf("ошибка записи JSON: %v", err)
 	}
 
 	fmt.Println("Добавлена новая задача")

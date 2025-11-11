@@ -13,7 +13,7 @@ func Out() {
 
 	data, err := os.ReadFile(file)
 	if err != nil && !os.IsNotExist(err) {
-		panic(err)
+		log.Fatalf("ошибка чтения файла: %v", err)
 	}
 
 	var taskes []workjson.Task
