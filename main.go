@@ -18,6 +18,7 @@ func main() {
 		fmt.Println("Выберите действие: ")
 		fmt.Println("1 - добавить задачу")
 		fmt.Println("2 - удалить задачу")
+		fmt.Println("3 - просмотреть задачи")
 		fmt.Println("0 - EXIT")
 
 		fmt.Print("Ваш выбор: ")
@@ -37,6 +38,10 @@ func main() {
 			fmt.Print("Введите название задачи которую хотите удалить: ")
 			fmt.Scanln(&del)
 			methodwithjson.Delete(del)
+		case "3":
+			fmt.Println("")
+			fmt.Println("Задачи в списке: ")
+			methodwithjson.Out()
 		case "0":
 			fmt.Println("")
 			fmt.Println("Exit")
