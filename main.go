@@ -38,6 +38,7 @@ func main() {
 			fmt.Scanln(&del)
 			methodwithjson.Delete(del)
 		case "0":
+			fmt.Println("")
 			fmt.Println("Exit")
 			return
 		default:
