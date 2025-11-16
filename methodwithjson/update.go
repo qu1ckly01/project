@@ -26,7 +26,7 @@ func Update(name string) {
 	upd := false
 	for i := range taskes {
 		if taskes[i].Name == name {
-			if taskes[i].Status == true {
+			if taskes[i].Status {
 				fmt.Println("Задача уже выполнена")
 				return
 			}

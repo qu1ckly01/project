@@ -24,7 +24,7 @@ func FalseTaskOut() {
 	}
 
 	for i, t := range taskes {
-		if t.Status == false {
+		if !t.Status {
 			fmt.Printf("%d)\n", i+1)
 			fmt.Printf("  Name: %s\n", t.Name)
 			fmt.Printf("  ID: %v\n", t.Id)
