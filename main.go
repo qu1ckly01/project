@@ -19,7 +19,9 @@ func main() {
 		fmt.Println("1 - добавить задачу")
 		fmt.Println("2 - удалить задачу")
 		fmt.Println("3 - просмотреть задачи")
-		fmt.Println("4 - обновить статус задачи задачи")
+		fmt.Println("4 - посмотреть выполненые задачи")
+		fmt.Println("5 - посмотреть невыполненые задачи")
+		fmt.Println("6 - обновить статус задачи задачи")
 		fmt.Println("0 - EXIT")
 
 		fmt.Print("Ваш выбор: ")
@@ -44,6 +46,14 @@ func main() {
 			fmt.Println("Задачи в списке: ")
 			methodwithjson.Out()
 		case "4":
+			fmt.Println("")
+			fmt.Println("Выполненые задачи: ")
+			methodwithjson.TrueTaskOut()
+		case "5":
+			fmt.Println("")
+			fmt.Println("Невыполненые задачи: ")
+			methodwithjson.FalseTaskOut()
+		case "6":
 			fmt.Println("")
 			fmt.Print("Введите название задачи: ")
 			updnametask, _ := reader.ReadString('\n')
